@@ -15,7 +15,7 @@ const Navbar = ({texto, ruta}) => {
         <img src={logo} alt="logo empresa" className='w-50 h-20' />
         <input type="search" placeholder='Buscar Producto' className='my-3 p-3 h-10 rounded-lg w-1/2 border-2' />
         <div className='flex gap-3'>
-          <button type='button' className='bg-sky-500 text-white p-2 rounded-lg uppercase font-medium hover:bg-sky-700 transition-colors'><Link to={`/productos/${ruta}`}>{texto}</Link></button>
+          <button type='button' className='bg-sky-500 text-white rounded-lg uppercase font-medium hover:bg-sky-700 transition-colors'><Link to={`/productos/${ruta}`} className='p-2 text-center w-full flex'>{texto}</Link></button>
           <button type='button' className='bg-sky-500 text-white p-2 rounded-lg uppercase font-medium hover:bg-sky-700 transition-colors'>Cerrar Sesion</button>
         </div>
       </div> 
