@@ -3,12 +3,63 @@ import Producto from "../models/Producto.js";
 
 /* Funciones */
 
+const getProductoStock = (producto, cantidad) => new Promise( (resolve, reject) => {
 
-const getProducto = async (venta, element, id, cantidad) =>{
+    if (producto) {
+        // console.log("****************");
+        // console.log("Nombre: " , producto.nombre);
+        // console.log("Stoct: " , producto.stock);
+        // console.log("Cantidad solicitada: " , cantidad);
+        // console.log("Saldo: ", producto.stock - cantidad);
+        if(producto.stock === 0){
+            //console.log(`No hay stock del Producto ${producto.nombre}`);
+            resolve({
+                msg: `No hay stock del Producto ${producto.nombre}`,
+                precio: producto.precio,
+                cantidad,
+                subtotal: producto.precio * 0, 
+                cantidadStock: 0,
+                cantidadVenta: 0,
+                estado: false
+            });
+        }else{
+            if((producto.stock - cantidad) < 0){
+                //console.log(`La cantidad solicitada no la hay, solo le vendemos ${producto.stock} `);
+                resolve({
+                    msg: `La cantidad solicitada no la hay, solo le vendemos ${producto.stock} `,
+                    precio: producto.precio,
+                    cantidad,
+                    subtotal: producto.precio * (producto.stock), 
+                    cantidadStock: 0,
+                    cantidadVenta: (producto.stock),
+                    estado: true
+                });
+                //await producto.save();
+            }else{
+                //console.log(`Venta registrada del  ${producto.nombre} - cantidad ${cantidad}`);
+                resolve({
+                    msg: `Venta registrada del  ${producto.nombre} - cantidad ${cantidad}`,
+                    precio: producto.precio,
+                    cantidad,
+                    subtotal: producto.precio * cantidad, 
+                    cantidadStock: (producto.stock - cantidad),
+                    cantidadVenta: cantidad,
+                    estado: true
+                });
+                //await producto.save();
+            }
+        };
+    }else{
+        reject('No se pudo aplicar el descuento del stock del articulo');
+    };
+
+});
+
+const getProducto = async (element, id, cantidad) =>{
    try {
         const producto = await Producto.findById(id);
 
-        //setTimeout(()=>{
+        setTimeout(()=>{
         getProductoStock(producto, cantidad)
         .then( (resultado) =>{
             // console.log(`El resultado es: ${resultado.msg}`);
@@ -20,25 +71,26 @@ const getProducto = async (venta, element, id, cantidad) =>{
                 element.subtotal = (element.cantidad   * element.inf.precio);
                 producto.stock = resultado.cantidadStock;
 
-                // console.log("***********************");
-                // console.log(resultado);
+                console.log("***********************");
+                console.log(resultado);
+
+                return element.subtotal
+                //await producto.save();
             }else{
                 element.estado = resultado;
                 element.cantidad = 0;
                 element.subtotal = (element.cantidad * element.inf.precio);
-                // console.log("***********************");
-                // console.log(resultado);
-
+                console.log("***********************");
+                console.log(resultado);
                 producto.stock = resultado.cantidadStock;
 
-            }
+            };
+
         })
         .catch( (error) =>{
             console.log(error.message);
         });
-        //}, 3000);
-
-        await producto.save();
+        }, 3000);  
 
    } catch (error) {
         console.log(error.message);
@@ -46,48 +98,7 @@ const getProducto = async (venta, element, id, cantidad) =>{
 
 };
 
-const getProductoStock = (producto, cantidad) => new Promise( (resolve, reject) => {
-
-        if (producto) {
-            // console.log("****************");
-            // console.log("Nombre: " , producto.nombre);
-            // console.log("Stoct: " , producto.stock);
-            // console.log("Cantidad solicitada: " , cantidad);
-            // console.log("Saldo: ", producto.stock - cantidad);
-            if(producto.stock === 0){
-                //console.log(`No hay stock del Producto ${producto.nombre}`);
-                resolve({
-                    msg: `No hay stock del Producto ${producto.nombre}`,
-                    cantidadStock: 0,
-                    cantidadVenta: 0,
-                    estado: false
-                });
-            }else{
-                if((producto.stock - cantidad) < 0){
-                    //console.log(`La cantidad solicitada no la hay, solo le vendemos ${producto.stock} `);
-                    resolve({
-                        msg: `La cantidad solicitada no la hay, solo le vendemos ${producto.stock} `,
-                        cantidadStock: 0,
-                        cantidadVenta: (producto.stock),
-                        estado: true
-                    });
-                    //await producto.save();
-                }else{
-                    //console.log(`Venta registrada del  ${producto.nombre} - cantidad ${cantidad}`);
-                    resolve({
-                        msg: `Venta registrada del  ${producto.nombre} - cantidad ${cantidad}`,
-                        cantidadStock: (producto.stock - cantidad),
-                        cantidadVenta: cantidad,
-                        estado: true
-                    });
-                    //await producto.save();
-                }
-            };
-        }else{
-            reject('No se pudo aplicar el descuento del stock del articulo');
-        };
-
-});
+/* Middelware */
 
 const prueba = (req, res)=>{
     res.send({
@@ -99,21 +110,16 @@ const createVentas = async (req, res)=>{
 
     try {
         const venta = new Venta(req.body);
-        venta.total = 0;
         // Generar un proceso que actualice el stock del articulo
         venta.articulos.forEach(element => {
-            getProducto(venta, element, element.inf._id, element.cantidad);
-            venta.total += element.subtotal;
+            getProducto(element, element.inf._id, element.cantidad);
         });
-        
-        console.log(venta.total)
-        console.log(venta);
+
 
         //const ventaGuardado = await venta.save();
         //res.json(ventaGuardado);
         res.json({
             msg: "Procesando.......",
-            venta
         });
     } catch (error) {
         console.error(error.message);
