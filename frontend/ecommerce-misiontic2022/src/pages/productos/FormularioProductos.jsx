@@ -13,19 +13,23 @@ const FormularioProductos = () => {
 
   const { submitProducto } = useProductos()
 
-  const generarId = () => Math.random().toString(6)
+  const generarId = () => Math.random(16).toString(6)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
+
     if ([nombre, descripcion, precio, stock].includes("")) {
       console.log("CAMPOS VACIOS")
       return
     }
+
     submitProducto({id: generarId(), nombre, descripcion, precio, stock })
-    setNombre('')
-    setDescripcion('')
-    setPrecio('')
-    setStock('')
+    
+    // Limpiar el formulario, BUGUEADO ARREGLAR!!!!!
+    // setNombre("")
+    // setDescripcion("")
+    // setPrecio("")
+    // setStock("")
   }
 
   return (
