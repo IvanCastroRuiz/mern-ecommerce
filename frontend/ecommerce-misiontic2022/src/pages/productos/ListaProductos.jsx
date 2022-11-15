@@ -30,7 +30,7 @@ const ListaProductos = () => {
                 </>
               )
               : (
-                <p className='mt-10 shadow-lg w-1/2 text-center p-5 uppercase font-bold text-2xl'>No hay Productos</p>
+                <p className='mt-10 shadow-lg w-full text-center p-5 uppercase font-bold text-2xl'>No hay Productos</p>
               )
             }
           </div>

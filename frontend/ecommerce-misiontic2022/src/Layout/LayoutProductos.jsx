@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const LayoutProductos = () => {
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       {/* <Navbar /> */}
       <Outlet />
     </div>

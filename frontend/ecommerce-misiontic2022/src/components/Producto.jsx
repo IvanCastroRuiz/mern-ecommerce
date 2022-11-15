@@ -1,5 +1,5 @@
 import producto1 from '../assets/producto.jpg'
-import { Link, Navigate, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Producto = ({ producto }) => {
 
@@ -15,7 +15,7 @@ const Producto = ({ producto }) => {
                     <p className='font-bold capitalize my-3 text-2xl'>{nombre}</p>
                 </div>
                 <div className='my-3'>
-                    <p className='font-bold text-lg'>Precio : $<span className='font-normal'>{precio}</span> </p>
+                    <p className='font-bold text-lg text-ellipsis overflow-hidden'>Precio : <span className='font-normal block'>${precio}</span> </p>
                     <p className='font-bold text-lg'>Stock : <span className='font-normal'>{stock}</span> </p>
                 </div>
             </NavLink>

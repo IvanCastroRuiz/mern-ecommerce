@@ -1,45 +1,25 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import useProductos from '../hooks/useProductos'
 
-import useProductos from '../../hooks/useProductos'
+const EditarProductos = ({ id, setModalEditar }) => {
 
-import Navbar from '../../components/Navbar'
+  const { obtenerProducto, productoState } = useProductos()
 
-const FormularioProductos = () => {
+  useEffect(() => {
+    obtenerProducto(id)
+  }, [])
 
-  const { submitProducto } = useProductos()
-
-  const [nombre, setNombre] = useState('')
-  const [descripcion, setDescripcion] = useState('')
-  const [precio, setPrecio] = useState('')
-  const [stock, setStock] = useState('')
-
-  const generarId = () => Math.random().toString(6).substr(5) + Date.now().toString(16).substr(5)
-
-  const handleSubmit = e => {
-    e.preventDefault()
-
-    if ([nombre, descripcion, precio, stock].includes("")) {
-      console.log("CAMPOS VACIOS")
-      return
-    }
-
-    submitProducto({ id: generarId(), nombre, descripcion, precio, stock })
-
-    // Limpiar el formulario, BUGUEADO ARREGLAR!!!!!
-    // setNombre("")
-    // setDescripcion("")
-    // setPrecio("")
-    // setStock("")
-  }
+  const { nombre, descripcion, precio, stock } = productoState
 
   return (
-    <>
-      <Navbar texto="Productos" ruta="" />
-      <div className=' w-full justify-center h-5/6 items-center'>
-        <div className='w-full'>
-          <h1 className='font-bold text-6xl uppercase text-center w-full mx-auto'>Registra tus <span className='text-sky-700'>productos</span></h1>
+    <div className='bg-slate-500 absolute w-full h-screen top-0 bg-opacity-60 '>
+      <div className='w-full h-full'>
+        <div className='w-full py-5 flex items-center h-full'>
+          <form className='mx-auto py-5 sm:px-9 sm:w-5/6 md:w-4/5 lg:w-3/4 shadow-lg bg-white rounded-xl'>
 
-          <form className='p-4 mx-auto sm:px-9 sm:w-5/6 md:w-4/5 lg:w-3/4 mt-8 shadow-lg' onSubmit={handleSubmit}>
+            <button onClick={e => setModalEditar(false)} className='text-black font-bold bg-white text-xl p-4 flex float-right hover:scale-110 '>X</button>
+
+            <h1 className='font-bold text-6xl uppercase text-center w-full mx-auto'>Registra tus <span className='text-sky-700'>productos</span></h1>
 
             <div className='mb-5'>
               <label htmlFor="nombre" className='font-medium'>Nombre</label>
@@ -68,8 +48,8 @@ const FormularioProductos = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
-export default FormularioProductos
+export default EditarProductos
