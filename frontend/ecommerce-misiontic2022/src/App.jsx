@@ -39,7 +39,7 @@ function App() {
 
             <Route path='/perfil' element={<LayoutPrivado />}>
               <Route path=':id' element={<Perfil />} />
-              <Route path='cambiar-password/:id ' element={<NuevoPassword />} />
+              <Route path='cambiar-password/:id' element={<NuevoPassword />} />
             </Route>
           </Routes>
         </ProductosProvider>
