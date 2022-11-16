@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 
 const ProductosContext = createContext()
 
@@ -6,6 +6,8 @@ const ProductosProvider = ({ children }) => {
 
     const [productos, setProductos] = useState(JSON.parse(localStorage.getItem('productos')) ?? [])
     const [productoState, setProductoState] = useState({})
+
+    useEffect(() => localStorage.setItem('productos', JSON.stringify(productos)), [productos])
 
     const submitProducto = producto => {
         setProductos([...productos, producto])

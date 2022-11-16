@@ -1,8 +1,29 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import imgLogin from '../assets/imagen-login.png'
 import fondoLogin from '../assets/fondo-login.png'
 
+import useAuth from '../hooks/useAuth'
+
 const Login = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const { usuarioLogeado } = useAuth()
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if ([email, password].includes('')) {
+            console.log('Campos Vacios')
+            return
+        }
+        
+        usuarioLogeado(email)
+    }
+
     return (
         <div className='flex w-full'>
             <div className='flex flex-col justify-center items-center lg:w-2/4 mr-10 md:flex-row '>
@@ -10,14 +31,14 @@ const Login = () => {
                 <div>
 
                     <h1 className='font-bold text-6xl uppercase text-center md:w-2/3 mx-auto'>Ingresa y disfruta de los <span className='text-sky-700'>productos</span></h1>
-                    <form className='p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md'>
+                    <form className='p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md' onSubmit={handleSubmit}>
                         <div className='mb-5'>
                             <label htmlFor="email" className='font-medium'>Email</label>
-                            <input type="email" id="email" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='ej: correo@correo.com' />
+                            <input type="email" id="email" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='ej: correo@correo.com' value={email} onChange={e => setEmail(e.target.value)} />
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="password" className='font-medium'>Password</label>
-                            <input type="password" id="password" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='*********' />
+                            <input type="password" id="password" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='*********' value={password} onChange={e => setPassword(e.target.value)} />
                         </div>
                         <input type="submit" value="Ingresar" className='uppercase bg-sky-700 text-white p-2 rounded-md w-full' />
                         <div className='flex justify-between px-4 mt-5 text-slate-500 '>

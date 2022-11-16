@@ -26,10 +26,13 @@ const FormularioProductos = () => {
     submitProducto({ id: generarId(), nombre, descripcion, precio, stock })
 
     // Limpiar el formulario, BUGUEADO ARREGLAR!!!!!
-    // setNombre("")
-    // setDescripcion("")
-    // setPrecio("")
-    // setStock("")
+
+    setTimeout(() => {
+      setNombre("")
+      setDescripcion("")
+      setPrecio("")
+      setStock("")
+    }, 1000)
   }
 
   return (
