@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useProductos from '../hooks/useProductos'
+import useProductos from '../../hooks/useProductos'
 
 const EditarProductos = ({ id, setModalEditar }) => {
 
@@ -12,7 +12,7 @@ const EditarProductos = ({ id, setModalEditar }) => {
   const { nombre, descripcion, precio, stock } = productoState
 
   return (
-    <div className='flex justify-center bg-slate-500 absolute w-full h-screen top-0 bg-opacity-60 '>
+    <div className='flex justify-center bg-slate-500 absolute w-full h-screen top-0 bg-opacity-60'>
       <div className='h-full w-5/6'>
         <div className='w-full py-5 flex items-center h-full'>
           <form className='px-5 mx-auto py-5 sm:px-9 sm:w-5/6 md:w-4/5 lg:w-3/4 shadow-lg bg-white rounded-xl'>
@@ -44,7 +44,7 @@ const EditarProductos = ({ id, setModalEditar }) => {
               <label htmlFor="stock" className='font-medium'>Imagen</label>
               <input type="file" id="stock" className='block placeholder-slate-400 p-2 w-full bg-slate-100' />
             </div>
-            <input type="submit" value="Guardar" className='uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer' />
+            <input type="submit" value="Guardar" className='font-medium uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer hover:bg-sky-500' />
           </form>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import useProductos from '../../hooks/useProductos'
-import Producto from '../../components/Producto'
+import Producto from './Producto'
 
 import Navbar from '../../components/Navbar'
 

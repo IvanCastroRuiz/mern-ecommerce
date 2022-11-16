@@ -16,10 +16,10 @@ const OlvidePassword = () => {
                             <label htmlFor="email" className='font-medium'>Email</label>
                             <input type="email" id="email" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='ej: correo@correo.com' />
                         </div>
-                        <input type="submit" value="Ingresar" className='uppercase bg-sky-700 text-white p-2 rounded-md w-full' />
+                        <input type="submit" value="Ingresar" className='font-medium uppercase bg-sky-700 text-white p-2 rounded-md w-full hover:bg-sky-500 cursor-pointer' />
                         <div className='flex justify-between px-4 mt-5 text-slate-500 '>
-                            <Link to="/registro" className=''>No tengo cuenta.</Link>
-                            <Link to="/">Ya tengo cuenta.</Link>
+                            <Link to="/registro" className='hover:text-slate-700'>No tengo cuenta.</Link>
+                            <Link to="/" className='hover:text-slate-700'>Ya tengo cuenta.</Link>
                         </div>
                     </form>
                 </div>

@@ -31,6 +31,7 @@ const Registro = () => {
         submitUsuario({ id: generarId(), nombre, email, direccion, web, telefono, password })
 
         setTimeout(() => {
+            setNombre("")
             setEmail("")
             setDireccion("")
             setWeb("")
@@ -77,10 +78,10 @@ const Registro = () => {
                             <label htmlFor="confirpassword" className='font-medium'>Confirmar Password</label>
                             <input type="password" id="confirpassword" className='block placeholder-slate-400 p-2 w-full bg-slate-100' placeholder='*********' value={confirPassword} onChange={e => setConfirPassword(e.target.value)} />
                         </div>
-                        <input type="submit" value="Ingresar" className='uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer' />
+                        <input type="submit" value="Ingresar" className='font-medium uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer hover:bg-sky-500' />
                         <div className='flex justify-between px-4 mt-5 text-slate-500 '>
-                            <Link to="/" className=''>Ya tengo cuenta.</Link>
-                            <Link to="/olvide-password">Olvide mi password.</Link>
+                            <Link to="/" className='hover:text-slate-700'>Ya tengo cuenta.</Link>
+                            <Link to="/olvide-password" className='hover:text-slate-700'>Olvide mi password.</Link>
                         </div>
                     </form>
                 </div>

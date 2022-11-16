@@ -1,4 +1,4 @@
-import producto1 from '../assets/producto.jpg'
+import producto1 from '../../assets/producto.jpg'
 import { NavLink } from 'react-router-dom'
 
 const Producto = ({ producto }) => {
