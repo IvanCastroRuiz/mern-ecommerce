@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
@@ -10,12 +10,16 @@ const Perfil = () => {
   const [web, setWeb] = useState("");
   const [telefono, setTelefono] = useState("");
 
+  const [verPerfil, setVerPerfil] = useState(false)
+
+  useEffect(() => setVerPerfil(true), [])
+
   return (
     <>
-      <Navbar texto="Productos" ruta="" />
+      <Navbar texto="Productos" ruta="" perfil={verPerfil}/>
       <div className=" w-full h-5/6">
         <div className="w-full flex flex-col">
-          <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
+          <h1 className="font-bold text-5xl uppercase text-center w-full mx-auto">
             Edita tu <span className="text-sky-700">Perfil</span>
           </h1>
           <div className="mx-auto my-5">

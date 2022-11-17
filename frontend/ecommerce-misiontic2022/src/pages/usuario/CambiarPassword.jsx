@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
 
-const NuevoPassword = () => {
+const CambiarPassword = () => {
   const [password, setPassword] = useState("");
   const [confirPassword, setConfirPassword] = useState("");
 
@@ -12,7 +12,7 @@ const NuevoPassword = () => {
       <Navbar texto="Productos" ruta="" />
       <div className=" w-full h-5/6">
         <div className="w-full flex flex-col">
-          <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
+          <h1 className="font-bold text-5xl uppercase text-center w-full mx-auto">
             Cambia tu <span className="text-sky-700">contraseña</span>
           </h1>
           <div className="mx-auto my-5">
@@ -66,4 +66,4 @@ const NuevoPassword = () => {
   );
 };
 
-export default NuevoPassword;
+export default CambiarPassword;

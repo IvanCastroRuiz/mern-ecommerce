@@ -10,7 +10,7 @@ const OlvidePassword = () => {
                 <img src={fondoOlvide} alt="imagen login" className='relative w-0 md:w-1/2 lg:w-0 sm:w-0' />
                 <div>
 
-                    <h1 className='font-bold text-6xl uppercase text-center md:w-2/3 mx-auto'>Recupera tu cuenta y disfruta de los <span className='text-sky-700'>productos</span></h1>
+                    <h1 className='font-bold text-5xl uppercase text-center md:w-2/3 mx-auto'>Recupera tu cuenta y disfruta de los <span className='text-sky-700'>productos</span></h1>
                     <form className='p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md'>
                         <div className='mb-5'>
                             <label htmlFor="email" className='font-medium'>Email</label>
