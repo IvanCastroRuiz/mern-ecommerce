@@ -11,7 +11,7 @@ const CambiarPassword = () => {
     <>
       <Navbar texto="Productos" ruta="" />
       <div className=" w-full h-5/6">
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col mt-24">
           <h1 className="font-bold text-5xl uppercase text-center w-full mx-auto">
             Cambia tu <span className="text-sky-700">contraseña</span>
           </h1>
@@ -26,7 +26,7 @@ const CambiarPassword = () => {
               </Link>
             </button>
           </div>
-          <form className="p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md">
+          <form className="p-4 mx-auto w-5/6 sm:px-9 sm:w-2/3 mt-8 shadow-md">
             <div className="mb-5">
               <label htmlFor="password" className="font-medium">
                 Password

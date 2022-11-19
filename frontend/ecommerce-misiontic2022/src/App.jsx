@@ -4,7 +4,7 @@ import LayoutAuth from './Layout/LayoutAuth'
 import Login from './pages/Login'
 import Registro from './pages/usuario/Registro'
 import OlvidePassword from './pages/usuario/OlvidePassword'
-import Confirmar from './pages/usuario/Confirmar' 
+import Confirmar from './pages/usuario/Confirmar'
 import Perfil from './pages/usuario/Perfil'
 import CambiarPassword from './pages/usuario/CambiarPassword'
 
@@ -16,13 +16,13 @@ import DetalleProducto from './pages/productos/DetalleProducto'
 import DetalleVenta from './pages/venta/DetalleVenta'
 
 import { ProductosProvider } from './context/ProductosProvider'
-import { UsuariosProvider } from './context/UsuariosProvider'
+import { VentaProvider } from './context/VentaProvider'
 
 function App() {
 
   return (
     <Router>
-      <UsuariosProvider>
+      <VentaProvider>
         <ProductosProvider>
           <Routes>
             {/* RUTAS PUBLICAS */}
@@ -49,7 +49,7 @@ function App() {
             </Route>
           </Routes>
         </ProductosProvider>
-      </UsuariosProvider>
+      </VentaProvider>
     </Router>
   )
 }

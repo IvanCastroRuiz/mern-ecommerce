@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import imagenRegistro from '../../assets/imagen-registro.png'
 import cajaCarton from '../../assets/caja-de-carton.png'
 
-import useAuth from '../../hooks/useAuth'
 
 const Registro = () => {
 
@@ -15,32 +14,6 @@ const Registro = () => {
     const [telefono, setTelefono] = useState('')
     const [password, setPassword] = useState('')
     const [confirPassword, setConfirPassword] = useState('')
-
-    const { submitUsuario } = useAuth()
-
-    const generarId = () => Math.random().toString(16).substr(5) + Date.now().toString(16).substr(5)
-
-    const handleSubmit = e => {
-        e.preventDefault()
-
-        if ([nombre, email, direccion, web, telefono, password, confirPassword].includes('')) {
-            console.log('Campos Vacios')
-            return
-        }
-
-        submitUsuario({ id: generarId(), nombre, email, direccion, web, telefono, password })
-
-        setTimeout(() => {
-            setNombre("")
-            setEmail("")
-            setDireccion("")
-            setWeb("")
-            setTelefono("")
-            setPassword("")
-            setConfirPassword("")
-        }, 1000)
-
-    }
 
     return (
         <div className='flex justify-center w-full'>

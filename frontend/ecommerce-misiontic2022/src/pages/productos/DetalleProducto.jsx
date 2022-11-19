@@ -22,7 +22,7 @@ const DetalleProducto = () => {
   return (
     <>
       <Navbar texto="Productos" ruta="" />
-      <div className={`${modalEditar ? 'h-0' : 'h-5/6' } w-5/6 mb-4 min-sm:h-screen mx-auto overflow-hidden`}>
+      <div className={`${modalEditar ? 'h-0' : 'h-5/6' } w-5/6 mb-4 min-sm:h-screen mx-auto overflow-hidden mt-24`}>
 
         <h1 className='font-bold text-6xl uppercase text-center w-full mx-auto mb-4 break-words	'>Información del <span className='text-sky-700'>producto</span></h1>
 

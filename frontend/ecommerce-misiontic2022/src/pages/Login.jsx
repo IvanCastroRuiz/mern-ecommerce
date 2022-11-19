@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import imgLogin from '../assets/imagen-login.png'
 import fondoLogin from '../assets/fondo-login.png'
 
-import useAuth from '../hooks/useAuth'
 
 const Login = () => {
 

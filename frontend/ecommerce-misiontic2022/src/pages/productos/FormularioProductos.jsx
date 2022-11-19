@@ -39,13 +39,13 @@ const FormularioProductos = () => {
     <>
       <Navbar texto="Productos" ruta="" />
       <div className=" w-full justify-center h-5/6 items-center">
-        <div className="w-full">
+        <div className="w-full mt-24">
           <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
             Registra tus <span className="text-sky-700">productos</span>
           </h1>
 
           <form
-            className="p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md"
+              className="p-4 mx-auto w-3/4 sm:px-9 mt-8 shadow-md"
             onSubmit={handleSubmit}
           >
             <div className="mb-5">
@@ -56,93 +56,68 @@ const FormularioProductos = () => {
                 type="text"
                 id="nombre"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="ej: Juan David Ariza Torres"
+                placeholder="ej: Deinfectante para manos"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
             </div>
             <div className="mb-5">
-              <label htmlFor="email" className="font-medium">
-                Email
+              <label htmlFor="descripcion" className="font-medium">
+                Descripcion
               </label>
-              <input
-                type="email"
-                id="email"
-                className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="ej: correo@correo.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              <textarea
+                id="descripcion"
+                className="block placeholder-slate-400 p-2 w-full bg-slate-100  "
+                placeholder="..."
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
               />
             </div>
             <div className="mb-5">
-              <label htmlFor="direccion" className="font-medium">
-                Direccion
+              <label htmlFor="precio" className="font-medium">
+                Precio
               </label>
-              <input
-                type="text"
-                id="direccion"
-                className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="ej: Calle 12 #34-56"
-                value={direccion}
-                onChange={(e) => setDireccion(e.target.value)}
-              />
+
+              <div className="flex items-center">
+                <span className="text-xl font-bold mr-2">$</span>
+                <input
+                  type="number"
+                  id="precio"
+                  className="block placeholder-slate-400 p-2 w-full bg-slate-100"
+                  placeholder="ej: 200000"
+                  value={precio}
+                  onChange={(e) => setPrecio(e.target.value)}
+                />
+              </div>
             </div>
             <div className="mb-5">
-              <label htmlFor="web" className="font-medium">
-                Web
-              </label>
-              <input
-                type="text"
-                id="web"
-                className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="ej: www.MiWebSite.com"
-                value={web}
-                onChange={(e) => setWeb(e.target.value)}
-              />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="telefono" className="font-medium">
-                Telefono
+              <label htmlFor="stock" className="font-medium">
+                Stock
               </label>
               <input
                 type="number"
-                id="telefono"
+                id="stock"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="ej: 300123456"
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
+                placeholder="ej: 5"
+                value={stock}
+                onChange={(e) => setStock(e.target.value)}
               />
             </div>
             <div className="mb-5">
-              <label htmlFor="password" className="font-medium">
-                Password
+              <label htmlFor="stock" className="font-medium">
+                Imagen
               </label>
               <input
-                type="password"
-                id="password"
+                type="file"
+                id="stock"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="*********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="mb-5">
-              <label htmlFor="confirpassword" className="font-medium">
-                Confirmar Password
-              </label>
-              <input
-                type="password"
-                id="confirpassword"
-                className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                placeholder="*********"
-                value={confirPassword}
-                onChange={(e) => setConfirPassword(e.target.value)}
-              />
-            </div>
+
             <input
               type="submit"
               value="Ingresar"
-              className="uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer"
+              className="uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer hover:bg-sky-500 transition-colors font-medium"
             />
           </form>
         </div>
