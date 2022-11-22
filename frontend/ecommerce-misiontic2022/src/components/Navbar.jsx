@@ -8,7 +8,7 @@ import AsideVenta from "../pages/venta/AsideVenta";
 import useVenta from "../hooks/useVenta";
 import VentaContext from "../context/VentaProvider";
 
-const Navbar = ({ texto, ruta, id, perfil, verVenta }) => {
+const Navbar = ({ texto, ruta, id, perfil, verVenta, verCompras }) => {
   const [ver, setVer] = useState(false);
   const [asideVentas, setAsideVentas] = useState(false);
 
@@ -82,6 +82,21 @@ const Navbar = ({ texto, ruta, id, perfil, verVenta }) => {
               {texto}
             </Link>
           </button>
+          {!verCompras &&
+            (
+              <button
+                type="button"
+                className="hover:scale-110 transition-all  hover:border-b-2 hover:border-b-blue-500"
+              >
+                <Link
+                  to={`/venta/compras-realizadas`}
+                  className="uppercase text-black p-2 w-full cursor-pointer font-medium  transition-all"
+                >
+                  Lista de Compras
+                </Link>
+              </button>
+            )
+          }
           <button
             type="button"
             className="bg-sky-700 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"
@@ -157,6 +172,15 @@ const Navbar = ({ texto, ruta, id, perfil, verVenta }) => {
                 {texto}
               </Link>
             </button>
+            {!verCompras &&
+              <button type="button">
+                <Link
+                  to={`/venta/compras-realizadas`}
+                  className="gap-2 text-black p-2 w-full flex justify-center cursor-pointer font-medium hover:border-b-blue-500 hover:border-b-2 bg-slate-200 transition-all"
+                >
+                  Lista de Compras
+                </Link>
+              </button>}
             <button
               type="button"
               className="bg-sky-700 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"

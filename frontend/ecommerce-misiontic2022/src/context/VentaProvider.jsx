@@ -23,7 +23,7 @@ const VentaProvider = ({ children }) => {
         const productoFiltrado = productos.find(producto => producto.id == id)
 
         setPrecioTotal(Number(productoFiltrado.precio) + Number(precioTotal))
-        // console.log(precioTotal)
+        
 
         if (!productoFiltrado) {
             return console.log('Producto no encontrado')
@@ -33,18 +33,14 @@ const VentaProvider = ({ children }) => {
             nombre: productoFiltrado.nombre,
             descripcion: productoFiltrado.descripcion,
             precio: productoFiltrado.precio,
-            cantidad: 0
+            cantidad: 1
         }
-
-        // const precioTotal = venta.map(items => items.precio)
-        // console.log(precioTotal)
-        // setPrecioTotal(precioTotal)
 
         setVentaState(objetoVenta)
         venta.find(item => ventaState.id === item.id ? setExiste(true) : setVenta(false))
-        // console.log(existe)
+        
         setVenta([...venta, ventaState])
-        // setVentaState({})
+        
     }
 
     return (

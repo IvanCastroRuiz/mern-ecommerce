@@ -14,6 +14,7 @@ import FormularioProductos from './pages/productos/FormularioProductos'
 import DetalleProducto from './pages/productos/DetalleProducto'
 
 import DetalleVenta from './pages/venta/DetalleVenta'
+import ListaVentas from './pages/venta/ListaVentas'
 
 import { ProductosProvider } from './context/ProductosProvider'
 import { VentaProvider } from './context/VentaProvider'
@@ -46,6 +47,7 @@ function App() {
 
             <Route path='/venta' element={<LayoutPrivado />}>
               <Route index element={<DetalleVenta />} />
+              <Route path='compras-realizadas' element={<ListaVentas />} />
             </Route>
           </Routes>
         </ProductosProvider>
