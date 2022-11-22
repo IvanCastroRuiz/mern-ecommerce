@@ -33,7 +33,7 @@ const ListaVentas = () => {
                       <span className='text-sky-700 uppercase text-xl'>Fecha del Pedido</span>
                     </th>
                     <th className='w-24 m'>
-                      <span className='text-sky-700 uppercase text-xl'>Acciones</span>
+                      <span className='text-sky-700 uppercase text-xl'>Estado</span>
                     </th>
                   </tr>
                 </thead>

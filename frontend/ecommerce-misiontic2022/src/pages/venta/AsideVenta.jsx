@@ -22,9 +22,7 @@ const AsideVenta = ({ verAside, setAsideVentas }) => {
               precioTotal > 0 ? (
                 <>
                   {venta.map(item => (
-                    <>
                       <ProductoVenta key={item.id} producto={item} />
-                    </>
                   ))}
                 </>
               ) : (
